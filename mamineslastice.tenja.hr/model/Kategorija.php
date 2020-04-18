@@ -20,12 +20,12 @@ class Kategorija
         return $izraz->fetch();
     }
 
-    public static function create($kategorija)
+    public static function create()
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into kategorija
-        (kategorija, naziv) values
-        (:kategorija, :naziv)');
+        (nadredena_kategorija, naziv) values
+        (:nadredena_kategorija, :naziv)');
         $izraz->execute($_POST);
     }
 
