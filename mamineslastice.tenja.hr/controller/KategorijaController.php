@@ -11,7 +11,7 @@ class KategorijaController extends AutorizacijaController
     {
 
         $this->view->render($this->viewDir . 'index',[
-            'podaci'=>Kategorija::read()
+            'podaci'=>Kategorija::readAll()
         ]);
 
     }

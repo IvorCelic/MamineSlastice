@@ -1,0 +1,24 @@
+<div class="col-5" style="text-align: right">
+    <a href="/kategorija/novi" class="btn btn-default" style="background-color: #49c1a2; width: 400px; margin-bottom: 20px;">Dodaj novi recept</a>
+</div>
+
+<div class="container" style="width: 100%;">
+    <br />    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Naziv</th>
+                <th>Nadređena kategorija</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                foreach($podaci as $red) {
+                    include 'tablicaStavka.phtml';
+                }
+             ?>
+        </tbody>
+    </table>
+    <br />
+</div>

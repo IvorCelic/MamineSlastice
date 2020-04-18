@@ -58,7 +58,7 @@ class Kategorija
         $izraz=$veza->prepare('select kategorija  
         where kategorija_ID=:kategorija_ID');
             $izraz->execute([
-                'sifra' => $_POST['sifra']
+                'kategorija_ID' => $_POST['kategorija_ID']
             ]);
 
             $sifrakategorija = $izraz->fetchColumn();
