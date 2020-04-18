@@ -28,13 +28,13 @@ class Recept
         return $izraz->fetchAll();
     }
 
-    public static function create()
+    public static function create($kategorija)
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into recept
         (kategorija, naziv) values
         (:kategorija, :naziv)');
-        $izraz->execute($_POST);
+        $izraz->execute(['kategorija' => $kategorija]);
     }
 
     public static function delete()
