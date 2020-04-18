@@ -1,15 +1,15 @@
 <tr>
-    <td style="font-size: 1.18em">
-        <a href="#" style="text-decoration: none"> 
-        <?php 
-                foreach($podaci as $red) {
-                    include 'receptStavka.phtml';
-                }
-             ?>
-        <?php echo $red->naziv ?> </a>
-    </td>
     <td>
         <?php echo $red->kategorija ?> 
+    </td>
+    <td>
+        <?php echo $red->naziv ?>
+    </td>
+    <td>
+        <?php echo $red->priprema ?>
+    </td>
+    <td>
+        <?php echo $red->slika ?>
     </td>
     <td>
         <a onclick="return confirm('Sigurno obrisati <?php echo $red->naziv ?> ?');" href="/recept/obrisi?recept_ID=<?php echo $red->recept_ID?>"><i title="Obriši" class="fas fa-trash" style="color: red; font-size: 1.5em;"></i></a>

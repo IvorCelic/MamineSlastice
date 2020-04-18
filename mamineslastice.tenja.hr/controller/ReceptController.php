@@ -36,7 +36,7 @@ class ReceptController extends AutorizacijaController
 
     public function promjena()
     {
-        $recept = Recept::read($_GET['sifra']);
+        $recept = Recept::read($_GET['recept_ID']);
         if(!$recept){
             $this->index();
             exit;
@@ -50,6 +50,15 @@ class ReceptController extends AutorizacijaController
             'recept'=>$recept,
             'kategorije' => Kategorija::readAll()
             ]);  
+    }
+
+    public function obrisi()
+    {
+        //prvo dođu silne kontrole
+        if(Recept::delete()){
+            header('location: /recept/index');
+        }
+        
     }
 
 }

@@ -16,17 +16,15 @@ class Recept
         return $izraz->fetchAll();
     }
 
-    public static function read()
+    public static function read($sifra)
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
-        select
-        a.recept_ID, a.naziv, b.naziv as kategorija
-        from recept a left join kategorija b
-        on a.kategorija=b.kategorija_ID
+        select *
+        from recept where recept_ID=:recept_ID
         ');
-        $izraz->execute();
-        return $izraz->fetchAll();
+        $izraz->execute(['recept_ID' => $sifra]);
+        return $izraz->fetch();
     }
 
     public static function create($kategorija)

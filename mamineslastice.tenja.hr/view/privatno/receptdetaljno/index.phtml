@@ -1,0 +1,22 @@
+<div class="container" style="width: 100%;">    
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Kategorija</th>
+                <th>Naziv</th>
+                <th>Priprema</th>
+                <th>Slika</th>
+                <th>Akcija</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                foreach($podaci as $red) {
+                    include 'receptStavka.phtml';
+                }
+             ?>
+        </tbody>
+    </table>
+    <br />
+</div>
