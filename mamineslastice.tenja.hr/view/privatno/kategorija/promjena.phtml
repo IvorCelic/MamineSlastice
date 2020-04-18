@@ -1,7 +1,7 @@
 <div class="container" style="width: 500px;">
   <div class="signup-form">
     <form action="/kategorija/promjeni" method="POST">
-  	<h2>Dodajte novu kategoriju</h2>
+  	<h2>Promjenite kategoriju</h2>
   	<hr>
       <div class="form-group">
   		  <label>Naziv kategorije</label>
@@ -19,8 +19,11 @@
 
   	  <div class="form-group">
         <input type="submit" class="btn btn-primary btn-block btn-lg" value="Promjeni"></input>
+        <a href="/kategorija/index" class="btn btn-primary btn-block btn-lg" style="background-color: red; text-decoration: none; color: white">Odustani</a>
       </div>
+
       <div class="text-center"><?php echo $poruka; ?></div>
+      <input type="hidden" name="kategorija_ID" value="<?php echo $kategorija->kategorija_ID; ?>"></input>
     </form>
   </div>
 </div>

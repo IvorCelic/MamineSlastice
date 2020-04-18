@@ -11,16 +11,19 @@ class KategorijaController extends AutorizacijaController
     {
 
         $this->view->render($this->viewDir . 'index',[
-            'podaci'=>Kategorija::readAll()
+            'podaci'=>Kategorija::readAll(),
+            'kategorije' => Kategorija::readAll()
         ]);
 
     }
 
     public function novi()
     {
-        $this->view->render($this->viewDir . 'novi',
-            ['poruka'=>'Dodajte naziv kategorije i njenu nadređenu kategoriju']
-        );
+        $this->view->render($this->viewDir . 'novi',[
+            'podaci' => Kategorija::readAll(),
+            'kategorije' => Kategorija::readAll(),
+            'poruka' => 'Dodajte naziv kategorije i njenu nadređenu kategoriju'
+        ]);
     }
 
     public function dodajnovi()
@@ -48,7 +51,6 @@ class KategorijaController extends AutorizacijaController
             ['kategorija'=>$kategorija,
                 'poruka'=>'Promjenite željene podatke']
         );
-     
     }
 
     public function promjeni()

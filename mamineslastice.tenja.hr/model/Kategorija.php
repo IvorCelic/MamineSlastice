@@ -6,15 +6,7 @@ class Kategorija
     public static function readAll()
     {
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('
-        
-        select 
-         a.kategorija_ID, a.naziv, b.naziv as nadredena_kategorija
-        from kategorija a left join kategorija b
-        on a.nadredena_kategorija=b.kategorija_ID
-        group by a.kategorija_ID, a.naziv, b.naziv
-        
-        ');
+        $izraz = $veza->prepare('select * from kategorija');
         $izraz->execute();
         return $izraz->fetchAll();
     }
@@ -22,21 +14,19 @@ class Kategorija
     public static function read($sifra)
     {
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('select 
-         a.kategorija_ID, a.naziv, b.naziv as nadredena_kategorija
-        from kategorija a left join kategorija b
-        on a.nadredena_kategorija=b.kategorija_ID');
+        $izraz = $veza->prepare('select * from kategorija
+        where kategorija_ID=:kategorija_ID');
         $izraz->execute(['kategorija_ID'=>$sifra]);
         return $izraz->fetch();
     }
 
-    public static function create()
+    public static function create($kategorija)
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into kategorija
         (nadredena_kategorija, naziv) values
         (:nadredena_kategorija, :naziv)');
-        $izraz->execute($_POST);
+        $izraz->execute(['kategorija' => $kategorija]);
     }
 
     public static function delete()
@@ -53,26 +43,9 @@ class Kategorija
 
     public static function update(){
         $veza = DB::getInstanca();
-        $veza->beginTransaction();
-
-        $izraz=$veza->prepare('select kategorija  
-        where kategorija_ID=:kategorija_ID');
-            $izraz->execute([
-                'kategorija_ID' => $_POST['kategorija_ID']
-            ]);
-
-            $sifrakategorija = $izraz->fetchColumn();
-
         $izraz=$veza->prepare('update kategorija 
-        set naziv=:naziv, nadredena_kategorija=:nadredena_kategorija
+        set naziv=:naziv,nadredena_kategorija=:nadredena_kategorija
         where kategorija_ID=:kategorija_ID');
-        $izraz->execute([
-            'naziv' => $_POST['naziv'],
-            'nadredena_kategorija' => $_POST['nadredena_kategorija'],
-            'kategorija_ID' => $sifrakategorija
-        ]); 
-    
-        
-        $veza->commit();
+        $izraz->execute($_POST);
     }
 }
