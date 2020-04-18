@@ -23,28 +23,34 @@ class ReceptController extends AutorizacijaController
             $this->view->render($this->viewDir . 'index',[
                 'podaci'=>Recept::readAll(),
                 'kategorije' => Kategorija::readAll(),
-                'poruka'=>'Dodajte naziv recepta i kategoriju kojoj pripada. <br />
-                           Nakon toga će te biti preusmjereni na stranicu gdje će te dodati sastojke, način pripreme i sliku'
+                'alertPoruka'=>'Morate odabrati kategoriju'
             ]);
             return;
         }
 
+        $sifraNovogRecepta=Recept::create($_POST['kategorija']);
+        $recept = Recept::read($sifraNovogRecepta);
+        $this->detalji($recept);
+
+    }
+
+    public function promjena()
+    {
+        $recept = Recept::read($_GET['sifra']);
+        if(!$recept){
+            $this->index();
+            exit;
+        }
+        $this->detalji($recept);     
+    }
+
+    private function detalji($recept)
+    {
         $this->view->render($this->viewDir . 'detalji',[
-            'sifra' => Recept::create($_POST['kategorija'])
-        ]);
+            'recept'=>$recept,
+            'kategorije' => Kategorija::readAll()
+            ]);  
     }
 
-    public function dodajnovi()
-    {
-        Recept::create();
-        $this->index();
-    }
-
-    public function obrisi()
-    {
-        //prvo dođu silne kontrole
-        Recept::delete();
-        header('location: /recept/index');
-    }
 }
 

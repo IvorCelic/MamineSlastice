@@ -8,7 +8,8 @@ class Recept
         $izraz = $veza->prepare('
         select
         a.recept_ID, a.naziv, b.naziv as kategorija
-        from recept a left join kategorija b
+        from recept a
+        left join kategorija b
         on a.kategorija=b.kategorija_ID
         ');
         $izraz->execute();
@@ -33,8 +34,9 @@ class Recept
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into recept
         (kategorija, naziv) values
-        (:kategorija, :naziv)');
+        (:kategorija, \'\')');
         $izraz->execute(['kategorija' => $kategorija]);
+        return $veza->lastInsertId();
     }
 
     public static function delete()
@@ -45,6 +47,8 @@ class Recept
             $izraz->execute($_GET);
         }catch(PDOException $e){
             echo $e->getMessage();
+            return false;
         }
+        return true;
     }
 }
