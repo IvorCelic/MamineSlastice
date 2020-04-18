@@ -24,9 +24,9 @@ class Kategorija
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into kategorija
-        (nadredena_kategorija, naziv) values
-        (:nadredena_kategorija, :naziv)');
-        $izraz->execute(['kategorija' => $kategorija]);
+        (kategorija, naziv) values
+        (:kategorija, :naziv)');
+        $izraz->execute($_POST);
     }
 
     public static function delete()
