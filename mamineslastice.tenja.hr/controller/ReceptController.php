@@ -30,7 +30,7 @@ class ReceptController extends AutorizacijaController
         }
 
         $this->view->render($this->viewDir . 'detalji',[
-            'sifra' => Recept::create($_POST['smjer'])
+            'sifra' => Recept::create($_POST['kategorija'])
         ]);
     }
 

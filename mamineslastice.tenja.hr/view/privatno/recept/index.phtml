@@ -1,19 +1,24 @@
 <div class="container" style="width: 100%;">
     <br />
-    <div class="row">
-        <div class="col-7">
-            <form class="form-inline" action="/recept/trazi" method="get">
-                <input style="width: 550px" class="form-control mr-sm-2" type="text" name="uvjet"
-                    id="uvjet"
-                    placeholder="Unesite dio naziva recepta..."
-                    value="<?php echo isset($_GET['uvjet']) ? $_GET['uvjet'] : '' ?>">
-               <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Traži</button>
-            </form>
+    <form action="/recept/novi" method="POST">
+        <div class="row">
+            <div class="col-4">
+                <select name="kategorija" id="kategorija" class="form-control mr-sm-2">
+                    <option value="0">Odaberite kategoriju</option>
+                    <?php foreach($kategorije as $kategorija): ?>
+                        <option value="<?php echo $kategorija->kategorija_ID ?>">
+                            <?php echo $kategorija->naziv ?>
+                        </option>
+                    <?php endforeach;?>
+                </select>
+            </div>
+            <div class="col-7" style="text-align: right">
+                <input type="submit" class="btn btn-default"
+                style="background-color: #49c1a2; width: 730px; margin-bottom: 20px;"
+                value="Dodaj novi recept na odabranu kategoriju">
+            </div>
         </div>
-        <div class="col-5" style="text-align: right">
-            <a href="/recept/novi" class="btn btn-default" style="background-color: #49c1a2; width: 400px; margin-bottom: 20px;">Dodaj novi recept</a>
-        </div>
-    </div>
+    </form>
    
     <table class="table table-striped">
         <thead class="thead-dark">
