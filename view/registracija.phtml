@@ -1,0 +1,41 @@
+<div class="container" style="width: 500px;">
+  <div class="signup-form">
+    <form action="/index/registrirajnovi" method="POST">
+  	<h2>Registrirajte se</h2>
+  	<p>To vam je minutica posla.</p>
+  	<hr>
+      <div class="form-group">
+  		  <label>Ime</label>
+        <input type="text" class="form-control" id="ime" name="ime" required="required" value="<?php 
+            echo isset($_POST['ime']) ? $_POST['ime'] : '' ?>">
+      </div>
+
+      <div class="form-group">
+  		  <label>Prezime</label>
+        <input type="text" class="form-control" id="prezime" name="prezime" required="required" value="<?php 
+            echo isset($_POST['prezime']) ? $_POST['prezime'] : '' ?>">
+      </div>
+
+      <div class="form-group">
+  		  <label>Email</label>
+        <input type="email" class="form-control" id="email" name="email" required="required" value="<?php 
+            echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
+      </div>
+
+  	  <div class="form-group">
+  		  <label>Lozinka</label>
+        <input type="password" class="form-control" id="lozinka" name="lozinka" required="required">
+      </div>
+
+  	  <div class="form-group">
+  	  	<label>Ponoviti lozinku</label>
+        <input type="password" class="form-control" id="lozinkaponovo" name="lozinkaponovo" required="required">
+      </div>
+
+  	  <div class="form-group">
+      <input type="submit" class="btn btn-primary btn-block btn-lg" value="Registrirajte se"></input>
+      </div>
+    </form>
+  	<div class="text-center"><?php echo $poruka; ?></div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="container" style="width: 500px;">
+  <div class="signup-form">
+    <form action="/kategorija/dodajnovi" method="POST">
+  	<h2>Dodajte novu kategoriju</h2>
+  	<hr>
+      <div class="form-group">
+  		  <label>Naziv kategorije</label>
+        <input type="text" class="form-control" id="naziv" name="naziv" value="<?php 
+            echo isset($_POST['naziv']) ? $_POST['naziv'] : '' 
+            ?>">
+      </div>
+  	  <div class="form-group">
+        <label>Nadređena kategorija</label>
+        <select name="nadredena_kategorija" id="nadredena_kategorija" class="form-control">
+              <option value="1">Slana jela</option>
+              <option value="2">Slatka jela</option>
+        </select>
+      </div>
+
+  	  <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Dodaj novu kategoriju"></input>
+      </div>
+      <div class="text-center"><?php echo $poruka; ?></div>
+    </form>
+  </div>
+</div>

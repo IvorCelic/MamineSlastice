@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <?php include_once 'predlozak/head.phtml'; ?>
+  </head>
+
+  <body>
+      <?php require_once 'predlozak/izbornik.phtml' ?>
+      
+      <!-- Početak tijela -->
+      <div class="container" style="min-height: 400px;">
+        <div class="row">
+          <?php 
+            echo $sadrzaj;
+           ?>
+        </div>
+      </div>
+      <!-- Kraj tijela -->
+
+      <footer class="py-5 bg-dark"> 
+        <?php require_once 'predlozak/podnozje.phtml' ?>
+      </footer>
+    <?php require_once 'predlozak/skripte.phtml' ?>
+  </body>
+
+</html>
