@@ -47,9 +47,10 @@ class KategorijaController extends AutorizacijaController
             exit;
         }
 
-        $this->view->render($this->viewDir . 'promjena',
-            ['kategorija'=>$kategorija,
-                'poruka'=>'Promjenite željene podatke']
+        $this->view->render($this->viewDir . 'promjena',[
+            'kategorija'=>$kategorija,
+            'kategorije' => Kategorija::readAll(),
+            'poruka'=>'Promjenite željene podatke']
         );
     }
 

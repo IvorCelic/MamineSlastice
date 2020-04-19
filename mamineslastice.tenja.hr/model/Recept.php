@@ -49,4 +49,13 @@ class Recept
         }
         return true;
     }
+
+    public static function update()
+    {
+        $veza = DB::getInstanca();
+        $izraz=$veza->prepare('update recept 
+        set naziv=:naziv, kategorija=:kategorija
+         where recept_ID=:recept_ID');
+        $izraz->execute($_POST);
+    }
 }

@@ -44,7 +44,7 @@ class Kategorija
     public static function update(){
         $veza = DB::getInstanca();
         $izraz=$veza->prepare('update kategorija 
-        set naziv=:naziv,nadredena_kategorija=:nadredena_kategorija
+        set naziv=:naziv,nadredena_kategorija=:kategorija
         where kategorija_ID=:kategorija_ID');
         $izraz->execute($_POST);
     }

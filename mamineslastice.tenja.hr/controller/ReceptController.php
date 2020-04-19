@@ -31,7 +31,13 @@ class ReceptController extends AutorizacijaController
         $sifraNovogRecepta=Recept::create($_POST['kategorija']);
         $recept = Recept::read($sifraNovogRecepta);
         $this->detalji($recept);
+    }
 
+    public function opis()
+    {
+        $this->view->render($this->viewDir . 'opis',[
+            'podaci' => Recept::readAll(),
+        ]);
     }
 
     public function promjena()
@@ -44,6 +50,12 @@ class ReceptController extends AutorizacijaController
         $this->detalji($recept);     
     }
 
+    public function promjeni()
+    {
+        Recept::update();
+        $this->index();
+    }
+
     private function detalji($recept)
     {
         $this->view->render($this->viewDir . 'detalji',[
@@ -54,7 +66,6 @@ class ReceptController extends AutorizacijaController
 
     public function obrisi()
     {
-        //prvo dođu silne kontrole
         if(Recept::delete()){
             header('location: /recept/index');
         }

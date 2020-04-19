@@ -9,7 +9,7 @@ class KorisnikController extends AdminController
     public function index()
     {
         $this->view->render($this->viewDir . 'index',[
-         'podaci' => Korisnik::read(),
+         'podaci' => Korisnik::read()
      ]);
     }
 
