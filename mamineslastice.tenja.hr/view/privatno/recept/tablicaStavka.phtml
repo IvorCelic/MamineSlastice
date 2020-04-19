@@ -1,15 +1,12 @@
-<tr>
-    <td style="font-size: 1.18em">
-        <a style="text-decoration: none" href="/recept/opis?recept_ID=<?php echo $red->recept_ID ?>"> 
-            <?php echo $red->naziv ?>
-        </a>
-    </td>
-
-    <td>
-        <?php echo $red->kategorija ?> 
-    </td>
-
-    <td>
-        <a onclick="return confirm('Sigurno obrisati <?php echo $red->naziv ?> ?');" href="/recept/obrisi?recept_ID=<?php echo $red->recept_ID?>"><i title="Obriši" class="fas fa-trash" style="color: red; font-size: 1.5em;"></i></a>
-    </td>
-</tr>
+<div class="col-lg-4 col-sm-6 portfolio-item">
+    <div class="card h-100">
+        <a href="/recept/opis?recept_ID=<?php echo $red->recept_ID ?>"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+            <div class="card-body">
+                <h3 class="card-title">
+                    <a style="text-decoration: none; color: #343a40"
+                    href="/recept/opis?recept_ID=<?php echo $red->recept_ID ?>"><?php echo $red->naziv ?></a>
+                </h3>
+                <p class="card-text"><?php echo $red->kategorija ?></p>
+            </div>
+    </div>
+</div>
