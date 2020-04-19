@@ -37,6 +37,7 @@ class ReceptController extends AutorizacijaController
     {
         $this->view->render($this->viewDir . 'opis',[
             'podaci' => Recept::readAll(),
+            'kategorije' => Kategorija::readAll()
         ]);
     }
 

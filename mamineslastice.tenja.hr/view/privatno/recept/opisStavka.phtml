@@ -1,0 +1,20 @@
+<!-- Naslov recepta -->
+<h1 class="mt-4 mb-3"><?php echo $red->naziv ?></h1>
+
+<!-- Pripadajuća kategorija -->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item active"><?php echo $kategorija->naziv ?></a></li>
+    <li class="breadcrumb-item active"><?php echo $red->naziv ?></li>
+
+    <li class="navbar-nav ml-auto">
+        <a href="/recept/promjena?recept_ID=<?php echo $red->recept_ID ?>">
+        <i title="Promjeni" class="fas fa-edit" style="font-size: 1.5em; padding-right: 5px"></i>
+        </a>
+    </li>
+    <li>
+        <a onclick="return confirm('Sigurno obrisati <?php echo $red->naziv ?> ');"
+            href="/recept/obrisi?recept_ID=<?php echo $red->recept_ID ?>">
+        <i title="Obriši" class="fas fa-trash" style="color: red; font-size: 1.5em;"></i>
+        </a> 
+    </li>
+</ol>

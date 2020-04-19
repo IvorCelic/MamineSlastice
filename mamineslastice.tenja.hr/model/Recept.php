@@ -54,7 +54,7 @@ class Recept
     {
         $veza = DB::getInstanca();
         $izraz=$veza->prepare('update recept 
-        set naziv=:naziv
+        set naziv=:naziv, kategorija=:kategorija
          where recept_ID=:recept_ID');
         $izraz->execute($_POST);
     }
