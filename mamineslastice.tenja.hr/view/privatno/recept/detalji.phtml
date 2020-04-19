@@ -8,25 +8,11 @@
                 <input type="text" class="form-control" id="naziv" name="naziv"
                     value="<?php echo $recept->naziv ?>">
             </div>
-
-            <div class="form-group">
-                <label>Nadređena kategorija</label>
-                    <select name="kategorija" id="kategorija" class="form-control">
-                        <?php foreach($kategorije as $kategorija): ?>
-                        <option <?php
-                            if($kategorija->kategorija_ID==$recept->kategorija) {
-                            echo 'selected="selected"';
-                            } ?> value="<?php echo $kategorija->kategorija_ID ?>">
-                            <?php echo $kategorija->naziv ?>
-                        </option>
-                        <?php endforeach;?>
-                    </select>
-            </div>
-
             <div class="form-group">
                 <input type="submit" class="btn btn-primary btn-block btn-lg" value="Dodaj novi recept"></input>
                 <a href="/recept/index" class="btn btn-primary btn-block btn-lg" style="background-color: red; text-decoration: none; color: white">Odustani</a>
             </div>
+            <input type="hidden" name="recept_ID" value="<?php echo $recept->recept_ID; ?>"></input>
         </form>
     </div>
 </div>
