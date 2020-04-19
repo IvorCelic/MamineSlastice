@@ -2,8 +2,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Mamine slastice</title>
+<title><?php echo APP::config('nazivAPP'); ?></title>
 
 <link href="<?php echo APP::config('url'); ?>/public/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php echo APP::config('url'); ?>/public/css/modern-business.css" rel="stylesheet">
 <link href="<?php echo APP::config('url'); ?>/public/css/registracija.css" rel="stylesheet">
+<?php if(isset($css)){
+    echo $css;
+} ?>

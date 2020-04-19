@@ -3,6 +3,11 @@
 class IndexController extends Controller
 {
 
+    public function era()
+    {
+        $this->view->render('era');
+    }
+
     public function prijava()
     {
         $this->view->render('prijava',[

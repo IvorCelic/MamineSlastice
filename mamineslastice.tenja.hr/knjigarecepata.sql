@@ -38,19 +38,8 @@ create table recept (
     kategorija      int not null,
     naziv           varchar(100) not null,
     priprema        text,
-    slika           varchar(255)
-);
-
-create table sastojak (
-    sastojak_ID int not null primary key auto_increment,
-    naziv       varchar(20)
-);
-
-create table recept_sastojak (
-    recept_sastojak_ID int not null primary key auto_increment,
-    recept              int not null,
-    sastojak            int not null,
-    kolicina            varchar(50)
+    slika           varchar(255),
+    sastojak        text
 );
 
 create table komentar (
@@ -65,9 +54,6 @@ alter table operater add foreign key (kategorija) references kategorija (kategor
 alter table kategorija add foreign key (nadredena_kategorija) references kategorija (kategorija_ID);
 
 alter table recept add foreign key (kategorija) references kategorija (kategorija_ID);
-
-alter table recept_sastojak add foreign key (recept) references recept (recept_ID);
-alter table recept_sastojak add foreign key (sastojak) references sastojak (sastojak_ID);
 
 alter table komentar add foreign key (recept) references recept (recept_ID);
 alter table komentar add foreign key (nadredeni_komentar) references komentar (komentar_ID);
@@ -106,35 +92,3 @@ insert into recept (recept_ID, kategorija, naziv) values
         # Jela od ribe
     (null, 10, 'Marinirana riba na gradele'), #-10
     (null, 10, 'Bijela riba s umakom od naranče i povrćem'); #-11
-
-
-# 1-10
-insert into sastojak (sastojak_ID, naziv) values
-    (null, 'grašak'), #-1
-    (null, 'mrkva'), #-2
-    (null, 'krumpir'), #-3
-    (null, 'kiseli krastavci'), #-4
-    (null, 'sol'), #-5
-    (null, 'majoneza'), #-6
-    (null, 'jabuka'), #-7
-    (null, 'kiselo vrhnje'), #-8
-    (null, 'senf'), #-9
-    (null, 'crni papar'); #-10
-
-
-# 1-10
-insert into recept_sastojak (recept_sastojak_ID, recept, sastojak, kolicina) values
-    # Francuska salata
-    (null, 1, 1, '225 g'), #-1
-    (null, 1, 2, '225 g'), #-2
-    (null, 1, 3, '300 g'), #-3
-    (null, 1, 4, '200 g'), #-4
-    (null, 1, 5, null), #-5
-    (null, 1, 6, '360 g'), #-6
-    (null, 1, 7, '1/4'), #-7
-    (null, 1, 8, '2 žlice'), #-8
-    (null, 1, 9, '1 žličica'), #-9
-    (null, 1, 10, null); #-10
-
-
-
