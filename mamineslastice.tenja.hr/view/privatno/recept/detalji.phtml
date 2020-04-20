@@ -1,6 +1,6 @@
 <div class="container">
 <br />
-<form action="/recept/promjeni" method="POST" enctype="multipart/form-data">
+<form action="/recept/promjeni" method="POST">
     <label>Naziv recepta</label>
     <input type="text" class="form-control" id="naziv" name="naziv"
         value="<?php echo $recept->naziv ?>"></input>
@@ -34,7 +34,8 @@
                 <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">Priprema</h2>
-                    <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                    <textarea rows="10" cols="100" class="form-control" id="priprema" name="priprema"
+                    required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
                 </div>
             </div>
         </div>

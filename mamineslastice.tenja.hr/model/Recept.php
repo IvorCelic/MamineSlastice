@@ -27,12 +27,28 @@ class Recept
         return $izraz->fetch();
     }
 
+    public static function readKategorija($sifra)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('
+        select
+        a.recept_ID, a.naziv, b.naziv as kategorija
+        from recept a
+        left join kategorija b
+        on a.kategorija=b.kategorija_ID
+        where a.recept_ID=:recept_ID
+        ');
+        $izraz->execute(['recept_ID' => $sifra]);
+        return $izraz->fetch();
+    }
+
+
     public static function create($kategorija)
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('insert into recept
-        (kategorija, naziv) values
-        (:kategorija, \'\')');
+        (kategorija, naziv, priprema) values
+        (:kategorija, \'\', :priprema)');
         $izraz->execute(['kategorija' => $kategorija]);
         return $veza->lastInsertId();
     }
@@ -54,7 +70,7 @@ class Recept
     {
         $veza = DB::getInstanca();
         $izraz=$veza->prepare('update recept 
-        set naziv=:naziv, kategorija=:kategorija
+        set naziv=:naziv, kategorija=:kategorija, priprema=:priprema
          where recept_ID=:recept_ID');
         $izraz->execute($_POST);
     }
