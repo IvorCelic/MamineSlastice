@@ -1,6 +1,6 @@
 <div class="container">
 <br />
-<form action="/recept/promjeni" method="POST">
+<form action="/recept/promjeni" method="POST" enctype="multipart/form-data">
     <label>Naziv recepta</label>
     <input type="text" class="form-control" id="naziv" name="naziv"
         value="<?php echo $recept->naziv ?>"></input>
@@ -25,10 +25,16 @@
             <div class="card mb-4">
 
 
+            <div id="slikaModal" data-reveal>
+                <img id="image" src="" alt="" />
+                <input type="file" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+            </div>
+
+
                 <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">Priprema</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
+                    <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
                 </div>
             </div>
         </div>
@@ -57,7 +63,7 @@
         <div class="col-lg-6 portfolio-item">
             <a href="/recept/index" class="btn btn-primary btn-block btn-lg" style="background-color: red; text-decoration: none; color: white; border: none">Odustani</a>
         </div>
-
+        <input type="hidden" name="recept_ID" value="<?php echo $recept->recept_ID; ?>"></input>
     </div>
 </form>
 </div>

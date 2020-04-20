@@ -7,6 +7,22 @@ class ReceptController extends AutorizacijaController
         DIRECTORY_SEPARATOR . 'recept' .
         DIRECTORY_SEPARATOR;
 
+    private function renderIndex($podaci,$stranica,$uvjet,$us){
+        $this->view->render($this->viewDir . 'index',[
+            'podaci'=>$podaci,
+            'stranica' => $stranica,
+            'uvjet' => $uvjet,
+            'ukupnoStranica' => $us,
+            'css' => '<link rel="stylesheet" href="' . APP::config('url') . 
+            'public/css/cropper.css">',
+            'jsLib' => '
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>',
+            'javascript'=>'
+            <script src="' . APP::config('url') . 
+                'public/js/recept/index.js"></script>'
+           ]);
+    }
+
     public function index()
     {
 
@@ -71,6 +87,19 @@ class ReceptController extends AutorizacijaController
             header('location: /recept/index');
         }
         
+    }
+
+    public function spremisliku(){
+
+        $slika = $_POST['slika'];
+        $slika=str_replace('data:image/png;base64,','',$slika);
+        $slika=str_replace(' ','+',$slika);
+        $data=base64_decode($slika);
+
+        file_put_contents(BP . 'public' . DIRECTORY_SEPARATOR
+        . 'images' . $_POST['id'] . '.png', $data);
+
+        echo "OK";
     }
 
 }

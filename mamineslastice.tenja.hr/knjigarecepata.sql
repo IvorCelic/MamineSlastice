@@ -38,7 +38,6 @@ create table recept (
     kategorija      int not null,
     naziv           varchar(100) not null,
     priprema        text,
-    slika           varchar(255),
     sastojak        text
 );
 
