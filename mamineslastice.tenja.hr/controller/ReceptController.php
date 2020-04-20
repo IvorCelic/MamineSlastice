@@ -35,6 +35,14 @@ class ReceptController extends AutorizacijaController
         $this->detalji($recept);       
     }
 
+    public function opis()
+    {
+        $this->view->render($this->viewDir . 'opis',[
+            'red' => Recept::read($_GET['recept_ID']),
+            'kategorija' => Recept::readKategorija('kategorija')
+        ]);
+    }
+
     public function promjena()
     {
         $recept = Recept::read($_GET['recept_ID']);
