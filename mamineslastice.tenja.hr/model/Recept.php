@@ -23,9 +23,10 @@ class Recept
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
 
-        select *
-        from recept
-        where recept_ID=:recept_ID
+        select a.recept_ID, a.kategorija, a.naziv, a.priprema, a.sastojak, b.naziv as nazivKategorije
+        from recept a
+        inner join kategorija b on a.kategorija=b.kategorija_ID
+        where a.recept_ID=:recept_ID
 
         ');
         $izraz->execute(['recept_ID' => $sifra]);
