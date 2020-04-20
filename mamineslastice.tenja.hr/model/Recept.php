@@ -6,11 +6,13 @@ class Recept
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
+
         select
         a.recept_ID, a.naziv, b.naziv as kategorija
         from recept a
         left join kategorija b
         on a.kategorija=b.kategorija_ID
+
         ');
         $izraz->execute();
         return $izraz->fetchAll();
@@ -20,35 +22,26 @@ class Recept
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('
+
         select *
-        from recept where recept_ID=:recept_ID
+        from recept
+        where recept_ID=:recept_ID
+
         ');
         $izraz->execute(['recept_ID' => $sifra]);
         return $izraz->fetch();
     }
-
-    public static function readKategorija($sifra)
-    {
-        $veza = DB::getInstanca();
-        $izraz = $veza->prepare('
-        select
-        a.recept_ID, a.naziv, b.naziv as kategorija
-        from recept a
-        left join kategorija b
-        on a.kategorija=b.kategorija_ID
-        where a.recept_ID=:recept_ID
-        ');
-        $izraz->execute(['recept_ID' => $sifra]);
-        return $izraz->fetch();
-    }
-
 
     public static function create($kategorija)
     {
         $veza = DB::getInstanca();
-        $izraz = $veza->prepare('insert into recept
+        $izraz = $veza->prepare('
+        
+        insert into recept
         (kategorija, naziv, priprema) values
-        (:kategorija, \'\', :priprema)');
+        (:kategorija, \'\', :priprema)
+
+        ');
         $izraz->execute(['kategorija' => $kategorija]);
         return $veza->lastInsertId();
     }
@@ -57,7 +50,12 @@ class Recept
     {
         try{
             $veza = DB::getInstanca();
-            $izraz=$veza->prepare('delete from recept where recept_ID=:recept_ID');
+            $izraz=$veza->prepare('
+
+            delete from recept
+            where recept_ID=:recept_ID
+            
+            ');
             $izraz->execute($_GET);
         }catch(PDOException $e){
             echo $e->getMessage();
@@ -69,9 +67,13 @@ class Recept
     public static function update()
     {
         $veza = DB::getInstanca();
-        $izraz=$veza->prepare('update recept 
+        $izraz=$veza->prepare('
+
+        update recept 
         set naziv=:naziv, kategorija=:kategorija, priprema=:priprema
-         where recept_ID=:recept_ID');
+         where recept_ID=:recept_ID
+         
+         ');
         $izraz->execute($_POST);
     }
 }

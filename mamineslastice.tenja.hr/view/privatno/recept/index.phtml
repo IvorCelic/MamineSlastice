@@ -12,6 +12,7 @@
                     <?php endforeach;?>
                 </select>
             </div>
+            <?php print_R($kategorija); ?>
             <div class="col-7" style="text-align: right">
                 <input type="submit" class="btn btn-default"
                 style="background-color: #49c1a2; width: 730px; margin-bottom: 20px;"
@@ -21,15 +22,18 @@
     </form>
     <hr />
     <div class="row">
-    <?php 
-                foreach($podaci as $red) {
-                    include 'tablicaStavka.phtml';
-                }
-             ?>
+        <?php 
+            foreach($podaci as $red) {
+                include 'red.phtml';
+            }
+          ?>
     </div>
+
+
+<?php if(isset($alertPoruka)): ?>
+    <script>
+        alert("<?php echo $alertPoruka ?>");
+    </script>
+<?php endif;?>
 </div>
 
-
-    
-   
-   
