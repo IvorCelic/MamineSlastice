@@ -25,19 +25,23 @@
             <div class="card mb-4">
 
 
-            <div id="slikaModal" data-reveal>
+
+            <div class="reveal" id="slikaModal" data-reveal>
                 <img id="image" src="" alt="" />
                 <input type="file" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif,.bmp,.tiff">
+                <a href="#" id="spremi">Spremi</a>
+                <button class="close-button" data-close aria-label="Close modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-<?php print_R($recept); ?>
 
                 <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
                 <div class="card-body">
                     <h2 class="card-title">Priprema</h2>
-                    <input type="text" id="priprema" name="priprema" value="<?php echo $recept->priprema ?>">
                     <textarea rows="10" cols="100" class="form-control" id="priprema" name="priprema"
-                    maxlength="999" style="resize:none" value="<?php echo $recept->priprema ?>"></textarea>
+                    maxlength="999" style="resize:none"><?php echo $recept->priprema ?></textarea>
                 </div>
+
             </div>
         </div>
 
@@ -48,11 +52,8 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <ul class="list-unstyled mb-0">
-                                <li>Naziv</li>
-                                <li>Naziv</li>
-                                <li>Naziv</li>
-                            </ul>
+                            <textarea rows="6" cols="40" id="sastojak" name="sastojak"
+                            style="resize:none"><?php echo $recept->sastojak ?></textarea>
                         </div>
                     </div>
                 </div>

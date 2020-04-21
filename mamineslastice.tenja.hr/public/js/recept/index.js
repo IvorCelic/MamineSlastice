@@ -1,7 +1,7 @@
-var sifraRecept;
+var IDRecept;
 
 $(".slika").click(function(){
-  sifraRecept=$(this).attr("id").split("_")[1];
+  IDRecept=$(this).attr("id").split("_")[1];
       $("#image").attr("src",$(this).attr("src"));
       $("#slikaModal").foundation("open");
       definirajCropper();
@@ -17,10 +17,10 @@ $(".slika").click(function(){
     $.ajax({
         type: "POST",
         url:  "/recept/spremisliku",
-        data: "id=" + sifraRecept + "&slika=" + result.toDataURL(),
+        data: "id=" + IDRecept + "&slika=" + result.toDataURL(),
         success: function(vratioServer){
           if(vratioServer==="OK"){
-            $("#p_"+sifraRecept).attr("src",result.toDataURL());
+            $("#p_"+IDRecept).attr("src",result.toDataURL());
             $("#slikaModal").foundation("close");
           }else{
             alert(vratioServer);

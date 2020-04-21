@@ -5,8 +5,12 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item active"><?php echo $red->nazivKategorije ?></a></li>
     <li class="breadcrumb-item active"><?php echo $red->naziv ?></li>
-
+    
+    
     <li class="navbar-nav ml-auto">
+        <a href="/index/pdf" target="_blank">PDF primjer</a>
+    </li>
+    <li>
         <a href="/recept/promjena?recept_ID=<?php echo $red->recept_ID ?>">
         <i title="Promjeni" class="fas fa-edit" style="font-size: 1.5em; padding-right: 5px"></i>
         </a>
@@ -46,9 +50,7 @@
         <div class="row">
           <div class="col-lg-6">
             <ul class="list-unstyled mb-0">
-              <li>Naziv</li>
-              <li>Naziv</li>
-              <li>Naziv</li>
+              <li><?php echo $red->sastojak ?></li>
             </ul>
           </div>
         </div>

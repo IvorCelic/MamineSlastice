@@ -54,8 +54,8 @@ class Recept
         $izraz = $veza->prepare('
         
         insert into recept
-        (kategorija, naziv, priprema) values
-        (:kategorija, \'\', \'\')
+        (kategorija, naziv, priprema, sastojak) values
+        (:kategorija, \'\', \'\', \'\')
 
         ');
         $izraz->execute(['kategorija' => $kategorija]);
@@ -86,7 +86,7 @@ class Recept
         $izraz=$veza->prepare('
 
         update recept 
-        set naziv=:naziv, kategorija=:kategorija, priprema=:priprema
+        set naziv=:naziv, kategorija=:kategorija, priprema=:priprema, sastojak=:sastojak
          where recept_ID=:recept_ID
          
          ');
@@ -94,6 +94,7 @@ class Recept
             'naziv' => $_POST['naziv'],
             'kategorija' => $_POST['kategorija'],
             'priprema' => $_POST['priprema'],
+            'sastojak' => $_POST['sastojak'],
             'recept_ID' => $_POST['recept_ID']
         ]);
     }
