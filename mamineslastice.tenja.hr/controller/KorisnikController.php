@@ -15,8 +15,27 @@ class KorisnikController extends AdminController
 
     public function obrisi()
     {
-        //prvo dođu silne kontrole
         Korisnik::delete();
+        header('location: /korisnik/index');
+    }
+
+    public function promjena()
+    {
+        $korisnik = Korisnik::read($_GET['operater_ID']);
+        if(!$korisnik){
+            $this->index();
+            exit;
+        }
+
+        $this->view->render($this->viewDir . 'promjena',[
+            'korisnik'=>$korisnik,
+            'poruka'=>'Promjenite željene podatke'
+        ]);
+    }
+
+    public function promjeni()
+    {
+        Korisnik::update();
         header('location: /korisnik/index');
     }
 }

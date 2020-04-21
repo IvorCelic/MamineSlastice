@@ -1,0 +1,28 @@
+<div class="container" style="width: 500px;">
+  <div class="signup-form">
+    <form action="/korisnik/promjeni" method="POST">
+  	<h2>Promjeni korisnika</h2>
+  	<hr>
+      <div class="form-group">
+  		  <label>Ime</label>
+        <input type="text" class="form-control" id="ime" name="ime" required="required" value="">
+      </div>
+
+      <div class="form-group">
+  		  <label>Prezime</label>
+        <input type="text" class="form-control" id="prezime" name="prezime" required="required" value="">
+      </div>
+
+      <div class="form-group">
+  		  <label>Email</label>
+        <input type="email" class="form-control" id="email" name="email" required="required" value="">
+      </div>
+
+  	  <div class="form-group">
+        <input type="submit" class="btn btn-primary btn-block btn-lg" value="Promjeni"></input>
+        <a href="/korisnik/index" class="btn btn-primary btn-block btn-lg" style="background-color: red; text-decoration: none; color: white">Odustani</a>
+      </div>
+    </form>
+  	<div class="text-center"><?php echo $poruka; ?></div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
     
     
     <li class="navbar-nav ml-auto">
-        <a href="/index/pdf" target="_blank">PDF primjer</a>
+        <a href="/index/pdf" target="_blank"><i class="fas fa-print" style="font-size: 1.5em; padding-right: 5px; color: #595959"></i></a>
     </li>
     <li>
         <a href="/recept/promjena?recept_ID=<?php echo $red->recept_ID ?>">
@@ -29,7 +29,18 @@
   <div class="col-lg-8">
 
     <!-- Slika -->
-    <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <?php
+            if(file_exists(BP . 'public' . DIRECTORY_SEPARATOR
+            . 'images' . DIRECTORY_SEPARATOR . 
+            'recepti' . DIRECTORY_SEPARATOR 
+            . $red->recept_ID . '.jpg')):
+        ?>
+        <img class="img-fluid rounded" src="<?php echo APP::config('url'); ?>public/images/recepti/<?php echo $red->recept_ID; ?>.jpg" 
+        alt="<?php echo $red->naziv ?>" />
+            <?php else:?>
+                <img class="img-fluid rounded" src="<?php echo APP::config('url'); ?>public/images/nepoznato.jpg" 
+        alt="Za predavača nije postavljena slika" />
+            <?php endif;?>
 
     <hr>
 

@@ -14,7 +14,6 @@ class Operater
                  password_hash($_POST['lozinka'],PASSWORD_BCRYPT);
             $_POST['sessionid'] = session_id();
             $_POST['uloga'] = 'korisnik';
-            //print_r($_POST);
 
             $izraz->execute($_POST);
             $headers = "From: Mamine slastice <mamineslastice@ms.tenja.hr>\r\n";

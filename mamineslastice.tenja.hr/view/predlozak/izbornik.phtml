@@ -22,12 +22,9 @@
         <li class="nav-item">
           <?php if($_SESSION['operater']->uloga==='admin'):?>
             <a class="nav-link" href="/korisnik/index">Korisnici</a>
-        </li>
-          <?php else: ?>
-        <li class="nav-item">
-          <a class="nav-link" href="/">O meni</a>
           <?php endif; ?>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="/index/era">ERA</a>
           <?php endif; ?>

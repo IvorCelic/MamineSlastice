@@ -21,4 +21,12 @@ class Korisnik
         }
         
     }
+
+    public static function update(){
+        $veza = DB::getInstanca();
+        $izraz=$veza->prepare('update operater 
+        set ime=:ime,prezime=:prezime, email=:email
+        where kategorija_ID=:kategorija_ID');
+        $izraz->execute($_POST);
+    }
 }

@@ -1,5 +1,4 @@
 <?php
-//ovo je singleton klasa https://phpenthusiast.com/blog/the-singleton-design-pattern-in-php
 class DB extends PDO
 {
     private static $instanca;

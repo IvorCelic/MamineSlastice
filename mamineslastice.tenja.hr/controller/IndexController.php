@@ -89,7 +89,6 @@ class IndexController extends Controller
 
     public function registrirajnovi()
     {
-        //prvo dođu sve silne kontrole
         Operater::registrirajnovi();
         $this->view->render('registracijagotova');
     }
@@ -117,7 +116,6 @@ class IndexController extends Controller
     public function test()
     {
      echo password_hash('nema',PASSWORD_BCRYPT);
-      // echo md5('mojaMala'); NE KORISTITI
     } 
 
     public function pdf(){
@@ -126,7 +124,7 @@ class IndexController extends Controller
         $pdf->AddPage();
         $html='';
         foreach(Recept::readAll() as $recept){
-            $html .= $recept->naziv . '<br />';
+            $html .= $recept->priprema . '<br />';
         }
         
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);

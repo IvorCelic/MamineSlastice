@@ -1,6 +1,19 @@
 <div class="col-lg-4 col-sm-6 portfolio-item">
     <div class="card h-100">
-        <a href="/recept/opis?recept_ID=<?php echo $red->recept_ID ?>"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <a href="/recept/opis?recept_ID=<?php echo $red->recept_ID ?>">
+        <?php
+            if(file_exists(BP . 'public' . DIRECTORY_SEPARATOR
+            . 'images' . DIRECTORY_SEPARATOR . 
+            'recepti' . DIRECTORY_SEPARATOR 
+            . $red->recept_ID . '.jpg')):
+        ?>
+        <img class="img-fluid rounded" src="<?php echo APP::config('url'); ?>public/images/recepti/<?php echo $red->recept_ID; ?>.jpg" 
+        alt="<?php echo $red->naziv ?>" />
+            <?php else:?>
+                <img class="img-fluid rounded" src="<?php echo APP::config('url'); ?>public/images/nepoznato.jpg" 
+        alt="Za recept nije postavljena slika" />
+            <?php endif;?>
+        </a>
             <div class="card-body">
                 <h3 class="card-title">
                     <a style="text-decoration: none; color: #343a40"
@@ -17,6 +30,5 @@
                     </a>
                 </p>
             </div>
-
     </div>
 </div>

@@ -97,5 +97,13 @@ class Recept
             'sastojak' => $_POST['sastojak'],
             'recept_ID' => $_POST['recept_ID']
         ]);
+
+        if(isset($_FILES['slika'])){
+            $putanja = BP . 'public' . DIRECTORY_SEPARATOR
+            . 'images' . DIRECTORY_SEPARATOR . 
+            'recepti' . DIRECTORY_SEPARATOR 
+            . $_POST['recept_ID'] . '.jpg';
+            move_uploaded_file($_FILES['slika']['tmp_name'], $putanja);
+        }
     }
 }

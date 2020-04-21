@@ -11,11 +11,11 @@ class View
 
     public function render($stranicaZaRender,$parametri=[])
     {
-        ob_start(); //ne šalji prema klijentu, nego bufferiraj
+        ob_start();
         extract($parametri);
         include BP . 'view' . DIRECTORY_SEPARATOR 
         . $stranicaZaRender . '.phtml';
-        $sadrzaj = ob_get_clean(); //sve što si skupio dodjeli varijabli $sadrzaj
+        $sadrzaj = ob_get_clean();
 
         include BP . 'view' . DIRECTORY_SEPARATOR 
         . $this->layout . '.phtml';

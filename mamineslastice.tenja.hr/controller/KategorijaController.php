@@ -34,7 +34,6 @@ class KategorijaController extends AutorizacijaController
 
     public function obrisi()
     {
-        //prvo dođu silne kontrole
         Kategorija::delete();
         header('location: /kategorija/index');
     }
@@ -56,7 +55,6 @@ class KategorijaController extends AutorizacijaController
 
     public function promjeni()
     {
-        // I OVDJE DOĐU SILNE KONTROLE
         Kategorija::update();
         header('location: /kategorija/index');
     }

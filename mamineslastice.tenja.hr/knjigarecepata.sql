@@ -41,22 +41,12 @@ create table recept (
     sastojak        text
 );
 
-create table komentar (
-    komentar_ID         int not null primary key auto_increment,
-    nadredeni_komentar  int not null,
-    recept              int not null
-);
-
 
 alter table operater add foreign key (kategorija) references kategorija (kategorija_ID);
 
 alter table kategorija add foreign key (nadredena_kategorija) references kategorija (kategorija_ID);
 
 alter table recept add foreign key (kategorija) references kategorija (kategorija_ID);
-
-alter table komentar add foreign key (recept) references recept (recept_ID);
-alter table komentar add foreign key (nadredeni_komentar) references komentar (komentar_ID);
-
 
 
 # 1-25
