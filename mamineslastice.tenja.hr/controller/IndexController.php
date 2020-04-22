@@ -123,11 +123,15 @@ class IndexController extends Controller
         $pdf->SetFont('dejavusans', '', 14, '', true);
         $pdf->AddPage();
         $html='';
-        foreach(Recept::readAll() as $recept){
+        $recept = Recept::read($_GET['recept_ID']);
+            $html .= $recept->naziv . '<br />';
+            $html .= $recept->nazivKategorije . '<br />';
             $html .= $recept->priprema . '<br />';
-        }
+            $html .= $recept->sastojak . '<br />' . '<br />';
+        
         
         $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
         $pdf->Output('example_001.pdf', 'I');
     }
 }
+

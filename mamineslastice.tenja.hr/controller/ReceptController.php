@@ -17,26 +17,6 @@ class ReceptController extends AutorizacijaController
         ]);
     }
 
-    private function renderIndex($podaci,$stranica,$uvjet,$us)
-    {
-        $this->view->render($this->viewDir . 'index',[
-            'podaci'=>$podaci,
-            'stranica' => $stranica,
-            'uvjet' => $uvjet,
-            'ukupnoStranica' => $us,
-            'css' => '<link rel="stylesheet" href="' . APP::config('url') . 
-            'public/css/cropper.css">',
-            'jsLib' => '
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-            <script src="' . APP::config('url') . 
-                'public/js/cropper.js"></script>',
-            'javascript'=>'
-            <script src="' . APP::config('url') . 
-                'public/js/recept/index.js"></script>'
-           ]);
-    }
-
-
     public function novi()
     {
         if(!isset($_POST['kategorija']) || 

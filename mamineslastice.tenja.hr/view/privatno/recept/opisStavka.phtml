@@ -5,10 +5,9 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item active"><?php echo $red->nazivKategorije ?></a></li>
     <li class="breadcrumb-item active"><?php echo $red->naziv ?></li>
-    
-    
+    <?php echo $red->recept_ID ?>
     <li class="navbar-nav ml-auto">
-        <a href="/index/pdf" target="_blank"><i class="fas fa-print" style="font-size: 1.5em; padding-right: 5px; color: #595959"></i></a>
+        <a href="/index/pdf?recept_ID=<?php echo $red->recept_ID ?>" target="_blank"><i class="fas fa-print" style="font-size: 1.5em; padding-right: 5px; color: #595959"></i></a>
     </li>
     <li>
         <a href="/recept/promjena?recept_ID=<?php echo $red->recept_ID ?>">

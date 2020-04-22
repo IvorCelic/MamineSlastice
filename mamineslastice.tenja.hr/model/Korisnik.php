@@ -2,12 +2,19 @@
 
 class Korisnik
 {
-    public static function read()
+    public static function readAll()
     {
         $veza = DB::getInstanca();
         $izraz = $veza->prepare('select * from operater');
         $izraz->execute();
         return $izraz->fetchAll();
+    }
+    public static function read($operater_ID)
+    {
+        $veza = DB::getInstanca();
+        $izraz = $veza->prepare('select email,ime,prezime,operater_ID from operater where operater_ID=:operater_ID');
+        $izraz->execute(['operater_ID'=>$operater_ID]);
+        return $izraz->fetch();
     }
 
     public static function delete()
@@ -26,7 +33,7 @@ class Korisnik
         $veza = DB::getInstanca();
         $izraz=$veza->prepare('update operater 
         set ime=:ime,prezime=:prezime, email=:email
-        where kategorija_ID=:kategorija_ID');
+        where operater_ID=:operater_ID');
         $izraz->execute($_POST);
     }
 }

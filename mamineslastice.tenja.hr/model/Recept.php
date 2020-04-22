@@ -8,7 +8,7 @@ class Recept
         $izraz = $veza->prepare('
 
         select
-        a.recept_ID, a.naziv, b.naziv as kategorija
+        a.recept_ID, a.naziv, a.priprema, b.naziv as kategorija
         from recept a
         left join kategorija b
         on a.kategorija=b.kategorija_ID
