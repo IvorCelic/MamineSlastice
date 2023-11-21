@@ -1,4 +1,4 @@
 # MamineSlastice
 
-Web application for cooking recepts
+Web aplikacija za recepte.
 
